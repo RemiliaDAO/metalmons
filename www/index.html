@@ -13,20 +13,20 @@
 
 }
 
-@media only screen and (orientation: portrait){
-
-.sidebar{
-	display: none;
+.wallet{
+	width: 18%;
+	position: fixed;
+	top: 0;
+	right: 0;
 }
 
-.toplevel{
+.wallet-image{
 	width: 100%;
-}
-
+	object-fit: contain;
 }
 
 .sidebar{
-	width: 20%;
+	width: 10%;
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -41,8 +41,8 @@
 
 .toplevel{
 	width: 70%;
-	margin-left: 20%;
-	margin-right: 10%;
+	margin-left: 15%;
+	margin-right: 15%;
 	display: flex;
 	flex-direction: column;
 
@@ -188,12 +188,27 @@
 }
 
 </style>
+<script>
+window.onload = function(){
+	document.getElementById("deck").onmouseover = function (){
+		this.src = "assets/IMG_1279.PNG";
+		
+	};
+	document.getElementById("deck").onmouseout = function (){
+		this.src = "assets/IMG_1496.PNG";
+	
+	};
+};
+</script>
 <html>
 <body>
 	<div class="sidebar">
 		<img class="sidebar-image" src="assets/IMG_1312.PNG"></img>
 		<img class="sidebar-image" src="assets/IMG_1283.PNG"></img>
 		<img class="sidebar-image" src="assets/IMG_1284.PNG"></img>
+	</div>
+	<div class="wallet">
+		<img class="wallet-image" src="assets/IMG_1277.PNG"></img>
 	</div>
 	<div class="toplevel">
 		<div class="banner">
@@ -202,13 +217,13 @@
 		<div class="frame">
 
 			<div class="f1e1">
-				<img class="frame-image" src="assets/IMG_1279.PNG"></img>
+				<img class="frame-image" src="assets/IMG_1496.PNG" id="deck"></img>
 			</div>
 			<div class="f1e2">
 				<img class="frame-image" src="assets/IMG_9486.GIF"></img>
 			</div>
 			<div class="f1e3">
-				<img class="frame-image" src="assets/IMG_1277.PNG"></img>
+				<img class="frame-image" src="assets/IMG_1287.PNG"></img>
 			</div>
 			<div class="f1e4">
 				<img class="frame-image" src="assets/IMG_9462.GIF"></img>
