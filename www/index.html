@@ -21,7 +21,12 @@
 }
 
 .wallet-image{
-	width: 100%;
+	position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+  
+    z-index:-1;
 	object-fit: contain;
 }
 
@@ -127,11 +132,14 @@
 }
 
 .wallet-info{
+	position: absolute;
 	font-family: 'Courier New', monospace;
-		font-weight: bold;
+	font-weight: bold;
 	font-size: 1.5em;
 	text-align: center;
-	
+	margin-top: 27%;
+	left: 10%;
+	display: none;
 }
 
 .desc-text{
@@ -165,7 +173,7 @@
 .footnote-text{
 	font-family: 'Courier New', monospace;
 	font-weight: bold;
-	font-size: 1.2em;
+
 	text-align: center;
 	width: 60%;
 	margin: auto;
@@ -189,6 +197,8 @@
 
 </style>
 <script>
+var wallet_connected = false;
+
 window.onload = function(){
 	document.getElementById("deck").onmouseover = function (){
 		this.src = "assets/IMG_1279.PNG";
@@ -197,6 +207,20 @@ window.onload = function(){
 	document.getElementById("deck").onmouseout = function (){
 		this.src = "assets/IMG_1496.PNG";
 	
+	};
+	document.getElementById("wallet").onclick = function (){
+		var wallet_image = document.getElementById("wallet-image");
+		var wallet_info = document.getElementById("wallet-info");
+		if(wallet_connected){
+			wallet_image.src = "assets/IMG_1277.PNG";
+			wallet_connected = false;
+			wallet_info.style.display = "none";
+		}
+		else{
+			wallet_image.src = "assets/IMG_1494.PNG";
+			wallet_connected = true;
+			wallet_info.style.display = "block";
+		}
 	};
 };
 </script>
@@ -207,8 +231,11 @@ window.onload = function(){
 		<img class="sidebar-image" src="assets/IMG_1283.PNG"></img>
 		<img class="sidebar-image" src="assets/IMG_1284.PNG"></img>
 	</div>
-	<div class="wallet">
-		<img class="wallet-image" src="assets/IMG_1277.PNG"></img>
+	<div class="wallet" id="wallet">
+		<div id="wallet-info" class="wallet-info">
+			<p>0x1AB~9B5</p>
+		</div>
+		<img id="wallet-image" class="wallet-image" src="assets/IMG_1277.PNG"></img>
 	</div>
 	<div class="toplevel">
 		<div class="banner">
@@ -244,9 +271,7 @@ window.onload = function(){
 					me God and make me steadfast to keep and perform the same.
 					</p>
 				</div>
-				<div class="wallet-info">
-					<p>Connected wallet: 0x1ABC7154748D1CE5144478CDEB574AE244B939B5</p>
-				</div>
+				
 				<div class="mint-cards-container">
 					<div class="mint-card-item">
 						<img class="frame-image" src="assets/IMG_1489.PNG"></img>
