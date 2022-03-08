@@ -120,8 +120,37 @@
 .f1e3{
 	position: absolute;
 	width: 30%;
-	margin-top: 40%;
+	margin-top: 45%;
 	left: 50%;
+}
+.f1e4{
+	position: absolute;
+	width: 20%;
+	margin-top: 10%;
+	left: 40%;
+}
+
+
+.f1e5{
+position: absolute;
+	width: 15%;
+	margin-top: 55%;
+	left: 80%;
+}
+
+
+
+.f1e6{
+	position: absolute;
+	width: 25%;
+	margin-top: 50%;
+	left: 0%;
+}
+.f1e7{
+	position: absolute;
+	width: 20%;
+	margin-top: 15%;
+	left: 15%;
 }
 
 .f2e1{
@@ -191,7 +220,7 @@
 }
 
 .art-container{
-	width: 70%;
+	width: 100%;
 	margin: auto;
 }
 
@@ -199,15 +228,25 @@
 <script>
 var wallet_connected = false;
 
+function cimg(id,ov,out){
+	document.getElementById(id).onmouseover = function (){
+		this.src = ov;	
+	};
+	document.getElementById(id).onmouseout = function (){
+		this.src = out;	
+	};
+}
+
 window.onload = function(){
-	document.getElementById("deck").onmouseover = function (){
-		this.src = "assets/IMG_1279.PNG";
-		
-	};
-	document.getElementById("deck").onmouseout = function (){
-		this.src = "assets/IMG_1496.PNG";
+	cimg("gen2","assets/IMG_1632.PNG","assets/IMG_1633.PNG");
+	cimg("gen1","assets/IMG_1634.PNG","assets/IMG_1621.PNG");
+	cimg("logo","assets/IMG_1642.PNG","assets/IMG_1314.PNG");
+	cimg("deck","assets/IMG_1279.PNG","assets/IMG_1496.PNG");
+	cimg("mc1","assets/IMG_1644.PNG","assets/IMG_1489.PNG");
+	cimg("mc2","assets/IMG_1650.PNG","assets/IMG_1488.PNG");
+	cimg("mc3","assets/IMG_1651.PNG","assets/IMG_1487.PNG");
+	cimg("portal","assets/IMG_1313.PNG","assets/IMG_1312.PNG");
 	
-	};
 	document.getElementById("wallet").onclick = function (){
 		var wallet_image = document.getElementById("wallet-image");
 		var wallet_info = document.getElementById("wallet-info");
@@ -227,9 +266,9 @@ window.onload = function(){
 <html>
 <body>
 	<div class="sidebar">
-		<img class="sidebar-image" src="assets/IMG_1312.PNG"></img>
-		<img class="sidebar-image" src="assets/IMG_1283.PNG"></img>
-		<img class="sidebar-image" src="assets/IMG_1284.PNG"></img>
+		<img id="portal" class="sidebar-image" src="assets/IMG_1312.PNG"></img>
+		<img id="gen1" class="sidebar-image" src="assets/IMG_1621.PNG"></img>
+		<img id="gen2" class="sidebar-image" src="assets/IMG_1633.PNG"></img>
 	</div>
 	<div class="wallet" id="wallet">
 		<div id="wallet-info" class="wallet-info">
@@ -239,10 +278,9 @@ window.onload = function(){
 	</div>
 	<div class="toplevel">
 		<div class="banner">
-			<img class="banner-image" src="assets/IMG_1314.PNG"></img>
+			<img id="logo" class="banner-image" src="assets/IMG_1314.PNG"></img>
 		</div>
 		<div class="frame">
-
 			<div class="f1e1">
 				<img class="frame-image" src="assets/IMG_1496.PNG" id="deck"></img>
 			</div>
@@ -250,10 +288,19 @@ window.onload = function(){
 				<img class="frame-image" src="assets/IMG_9486.GIF"></img>
 			</div>
 			<div class="f1e3">
-				<img class="frame-image" src="assets/IMG_1287.PNG"></img>
+				<video class="frame-image" src="assets/720p_Match_Framerate_Final.mp4" controls></video>
 			</div>
 			<div class="f1e4">
 				<img class="frame-image" src="assets/IMG_9462.GIF"></img>
+			</div>
+			<div class="f1e5">
+				<img class="frame-image" src="assets/IMG_1287.PNG"></img>
+			</div>
+			<div class="f1e6">
+				<img class="frame-image" src="assets/IMG_1288.PNG"></img>
+			</div>
+			<div class="f1e7">
+				<video class="frame-image" src="assets/Automatic.mp4" autoplay muted loop></video>
 			</div>
 			<img  class="frame-bg" src="assets/IMG_1301.PNG"></img>
 		</div>
@@ -274,15 +321,15 @@ window.onload = function(){
 				
 				<div class="mint-cards-container">
 					<div class="mint-card-item">
-						<img class="frame-image" src="assets/IMG_1489.PNG"></img>
+						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
 						<p>Mint 1</p>
 					</div>
 					<div class="mint-card-item">
-						<img class="frame-image" src="assets/IMG_1488.PNG"></img>
+						<img id="mc2" class="frame-image" src="assets/IMG_1488.PNG"></img>
 						<p>Mint 5</p>
 					</div>
 					<div class="mint-card-item">
-						<img class="frame-image" src="assets/IMG_1487.PNG"></img>
+						<img id="mc3" class="frame-image" src="assets/IMG_1487.PNG"></img>
 						<p>Mint 10</p>
 					</div>
 				</div>
@@ -304,13 +351,20 @@ window.onload = function(){
 					per second, through a nozzle one third the size of a human hair.
 					</p>
 				</div>
-				<div class="art-container">
-					<img class="frame-image" src="assets/IMG_1254.PNG"></img>
-				</div>
+
 			</div>
 			<img  class="frame-bg" src="assets/IMG_1305.PNG"></img>
 		</div>
-		<div class="footnote-text" style="margin-top: 75%">
+		<div class="art-container" style="margin-top: 80%">
+			<img class="frame-image" src="assets/IMG_1254.PNG"></img>
+		</div>
+		<div class="art-container" style="margin-top: 10%">
+			<img class="frame-image" src="assets/IMG_9701.PNG"></img>
+		</div>
+		<div class="art-container" style="margin-top: 10%">
+			<img class="frame-image" src="assets/IMG_9592.jpg"></img>
+		</div>
+		<div class="footnote-text">
 			<p>BOTTOM TEXT | BOTTOM TEXT | BOTTOM TEXT</p>
 		</div>
 	</div> 
