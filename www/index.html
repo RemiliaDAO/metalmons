@@ -1,6 +1,5 @@
 <style>
 
-
 @media only screen and (orientation: portrait){
 
 .sidebar{
@@ -11,6 +10,10 @@
 	width: 100%;
 }
 
+}
+
+body {
+	cursor: url("assets/IMG_1942.PNG"), pointer;
 }
 
 .wallet{
@@ -30,6 +33,7 @@
 	object-fit: contain;
 }
 
+
 .sidebar{
 	width: 10%;
 	position: fixed;
@@ -37,6 +41,7 @@
 	left: 0;
 	display: flex;
 	flex-direction: column;
+	
 }
 
 .sidebar-image{
@@ -50,7 +55,7 @@
 	margin-right: 15%;
 	display: flex;
 	flex-direction: column;
-
+	
 }
 
 .banner{
@@ -105,29 +110,29 @@
 
 .f1e1{
 	position: absolute;
-	width: 30%;
+	width: 25%;
 	margin-top: 35%;
-	left: 15%;
+	left: 36%;
 }
 
 .f1e2{
 	position: absolute;
 	width: 20%;
-	margin-top: 15%;
+	margin-top: 40%;
 	left: 65%;
 }
 
 .f1e3{
 	position: absolute;
-	width: 30%;
-	margin-top: 45%;
-	left: 50%;
+	width: 40%;
+	margin-top: 10%;
+	left: 30%;
 }
 .f1e4{
 	position: absolute;
 	width: 20%;
-	margin-top: 10%;
-	left: 40%;
+	margin-top: 40%;
+	left: 15%;
 }
 
 
@@ -173,8 +178,6 @@ position: absolute;
 
 .desc-text{
 	font-family: 'Courier New', monospace;
-	
-	
 }
 
 .mint-cards-container{
@@ -182,7 +185,7 @@ position: absolute;
 	width: 100%;
 	
 	margin: auto;
-	margin-top: 10%;
+	margin-top: 0%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-around;
@@ -247,6 +250,14 @@ window.onload = function(){
 	cimg("mc3","assets/IMG_1651.PNG","assets/IMG_1487.PNG");
 	cimg("portal","assets/IMG_1313.PNG","assets/IMG_1312.PNG");
 	
+	b = document.querySelector("body");
+	b.onmousedown = function(){
+		this.style.cursor = "url(\"assets/IMG_1941.PNG\"), pointer";
+	}
+	b.onmouseup = function(){
+		this.style.cursor = "url(\"assets/IMG_1942.PNG\"), pointer";
+	}
+	
 	document.getElementById("wallet").onclick = function (){
 		var wallet_image = document.getElementById("wallet-image");
 		var wallet_info = document.getElementById("wallet-info");
@@ -264,6 +275,9 @@ window.onload = function(){
 };
 </script>
 <html>
+<head>
+<title>Super Metal Mons</title>
+</head>
 <body>
 	<div class="sidebar">
 		<img id="portal" class="sidebar-image" src="assets/IMG_1312.PNG"></img>
@@ -312,11 +326,13 @@ window.onload = function(){
 					Super Metal Mons! are ancient sculpture NFT’s mined from GAN mana rocks that fell from the clouds.
 					</p>
 					<p>
-					Long ago nobles and art scholars played a chess-like strategy game with these artifacts. Each type of mon had a specific role to play in a party. Angels heal and protect while Demons attack. Drainers collect and drain mana as Mystics cast magic from a far. Mons are traded and battled between friends to curate the most effective and/or aesthetically pleasing team.  their own unique Personality. There are some mons that are truly Sinister and Mischievous and others that are just Noble and Cute!					</p>
+					Long ago nobles and art scholars played a chess-like strategy game with these artifacts. Each type of mon had a specific role to play in a party. Angels heal and protect while Demons attack. Drainers collect and drain mana as Mystics cast magic from a far. Mons are traded and battled between friends to curate the most effective and/or aesthetically pleasing team. 
+					<p>
+					But mons are not just game pieces, each one has their own unique Name and Personality. There are some mons that are truly Sinister and Mischievous and others that are just Noble and Cute! They’re also made up of different rare materials, from Gem to Gummy and Metal to Mana, and the quality of their mining is scored by GAN Brilliance.
+					</p>
 					<p>
 					A second generation of Super Metal Mons! has been rediscovered and are currently being mined by new collectors and avant venture capitalists alike. 
 					</p>
-					
 				</div>
 				
 				<div class="mint-cards-container">
@@ -356,7 +372,6 @@ window.onload = function(){
 					GAN felt like an easy extension of our thoughts in the way we brought our dataset together. To us, GAN is a sort of pixel-alchemy, sculpting and blending what you give it to conjure infinite results. This process reminded us of when we would bring a grocery bag full of our favorite toys to our cousin’s house as kids. We would mix all of the different IPs of mini guys together, Digimon, LEGO, Pokémon, it didn’t matter to us. We would just craft these ridiculous stories involving everything. And to think of how we obtained all these trading cards and figures. We opened packs, found different odd ones in bins at a flea market or yard sale. Always a slight chance to get something new or rare. And that’s how it felt generating the mons. There was something like a 1:200, 1:500 chance of getting something amazing you’d never seen before. 
 					</p>
 					<p>
-					GAN felt like an easy extension of our thoughts in the way we brought our dataset together. To us, GAN is a sort of pixel-alchemy, sculpting and blending what you give it to conjure infinite results. This process reminded us of when we would bring a grocery bag full of our favorite toys to our cousin’s house as kids, we would mix all of the different IPs of mini guys together, Digimon, LEGO, Pokémon. It didn’t matter to us, we would just craft these ridiculous stories involving everything. And to think of how we obtained all these trading cards and figures. We opened packs, found different odd ones in bins at a flea market or yard sale. Always a slight chance to get something new or rare. That’s how it felt generating the mons. There was something like a 1:200, 1:500 chance of getting something amazing you’d never seen before.
 					That’s what’s so interesting about NFTs and minting, it’s the same familiar experience of rolling for a random rare drop, like a virtual gachapon machine; or digging through the secondary market, like a virtual yard sale. It’s so familiar and exciting in a totally new medium of digital collectibles. But with SMM we wanted to make sure every single mint felt rewarding and satisfying. 
 					</p>
 				</div>
@@ -367,11 +382,16 @@ window.onload = function(){
 			<div class="frame-toplevel">
 				<div class="desc-text">
 					<p> 
-					For the original Super Metal Mons! collection, we only generated around 5,000 mons. We handpicked and improved 144 of the designs. Each image generated was digitally painted and sculpted to improve the overall design while still leaving the magic of the GAN. This was our first hand curated collection, and it went live pre-minted directly on OpenSea where buyers could pick out their favorites. These mons also featured less distinct rarity types. Gen 2 introduces a strong element of rarity speculation to give mons a real collectible flavor. And unlike Gen 1, Gen 2 will have a fair random mint.					<p>
-					Before this, we had always wanted to design a game with mini figures inspired by Akira Toriyama and other Japanese collectible monster games. After seeing turtle’s experiments with GAN, I began digging through eBay and gathering toys from when we were kids to create a dataset that we continuously built upon.
+					For the original Super Metal Mons! collection, we only generated around 5,000 mons. We hand-picked and improved 144 of the designs. Each image generated was digitally painted and sculpted to improve the overall design while still leaving the magic of the GAN. This was our first hand curated collection, and it went live pre-minted directly on OpenSea where buyers could pick out their favorites. These mons also featured less distinct rarity types, unlike Gen 2 which introduces a strong element of rarity speculation to give mons a real collectible flavor.
 					</p>
 					<p>
-					For Super Metal Mons!!, we generated over 30,000 images/figures and after several months, we edited and curated the best into the final 777.					
+					For Super Metal Mons!!, we generated over 30,000 images/figures, and after several months, we edited and curated the best into the final 777.
+					</p>
+					<p>
+					After being generated and selected, every mon went through a process of sorting into various Types, Materials and Personalities. Much like the names we gave each mon, sorting them was a subjective and intuitive process we did by hand. We also scored them with a GAN Brilliance rating from Good to Perfect based on their form, color, texture and overall balance. GAN Brilliance was proven as a difficult task because we liked them all so much, just because a design wasn’t as Perfect didn’t mean it was less than others.
+					</p>
+					<p>
+					Our main goal with SMM!! was to make as many 1/1 unique guys while still keeping a relatively small high art mint. We were able to produce more detailed mons than the original gen 1! We hope you enjoy this collection of mons as much as we do, and we hope you will find many that will become your favorites!
 					</p>
 				</div>
 			</div>
