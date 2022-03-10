@@ -176,6 +176,13 @@ position: absolute;
 	display: none;
 }
 
+.desc-title{
+	font-family: 'Courier New', monospace;
+	font-weight: bold;
+	text-align: center;
+}
+
+
 .desc-text{
 	font-family: 'Courier New', monospace;
 }
@@ -223,26 +230,40 @@ position: absolute;
 }
 
 .art-container{
-	width: 90%;
+	width: 50%;
 	margin: auto;
+}
+
+.art-container:hover{
+	filter: drop-shadow(0 0 2rem black);
 }
 
 </style>
 <script>
 var wallet_connected = false;
+var mouse_state = false;
+var over_state = false;
+
 
 function cimg(id,ov,out){
 	document.getElementById(id).onmouseover = function (){
+		over_state = true;
 		this.src = ov;	
+		document.querySelector("body").style.cursor = "url(\"assets/IMG_1941.PNG\"), pointer";
 	};
 	document.getElementById(id).onmouseout = function (){
+		over_state = false;
 		this.src = out;	
+		if(!mouse_state){
+			document.querySelector("body").style.cursor = "url(\"assets/IMG_1942.PNG\"), pointer";
+		}
 	};
 }
 
 window.onload = function(){
-	cimg("gen2","assets/IMG_1632.PNG","assets/IMG_1633.PNG");
-	cimg("gen1","assets/IMG_1634.PNG","assets/IMG_1621.PNG");
+
+	cimg("gen2","assets/IMG_1986.PNG","assets/IMG_1985.PNG");
+	cimg("gen1","assets/IMG_1988.PNG","assets/IMG_1987.PNG");
 	cimg("logo","assets/IMG_1642.PNG","assets/IMG_1314.PNG");
 	cimg("deck","assets/IMG_1279.PNG","assets/IMG_1497.PNG");
 	cimg("mc1","assets/IMG_1644.PNG","assets/IMG_1489.PNG");
@@ -252,10 +273,14 @@ window.onload = function(){
 	
 	b = document.querySelector("body");
 	b.onmousedown = function(){
+		mouse_state = true;
 		this.style.cursor = "url(\"assets/IMG_1941.PNG\"), pointer";
 	}
 	b.onmouseup = function(){
-		this.style.cursor = "url(\"assets/IMG_1942.PNG\"), pointer";
+		mouse_state = false;
+		if(!over_state){
+			this.style.cursor = "url(\"assets/IMG_1942.PNG\"), pointer";
+		}
 	}
 	
 	document.getElementById("wallet").onclick = function (){
@@ -281,8 +306,8 @@ window.onload = function(){
 <body>
 	<div class="sidebar">
 		<img id="portal" class="sidebar-image" src="assets/IMG_1312.PNG"></img>
-		<img id="gen1" class="sidebar-image" src="assets/IMG_1621.PNG"></img>
-		<img id="gen2" class="sidebar-image" src="assets/IMG_1633.PNG"></img>
+		<img id="gen1" class="sidebar-image" src="assets/IMG_1987.PNG"></img>
+		<img id="gen2" class="sidebar-image" src="assets/IMG_1985.PNG"></img>
 	</div>
 	<div class="wallet" id="wallet">
 		<div id="wallet-info" class="wallet-info">
@@ -321,6 +346,11 @@ window.onload = function(){
 		</div>
 		<div class="frame" style="margin-top: 70%">
 			<div class="frame-toplevel">
+				<div class="desc-title">
+				<p>
+				Background
+				</p>
+				</div>
 				<div class="desc-text">
 					<p>
 					Super Metal Mons! are ancient sculpture NFT’s mined from GAN mana rocks that fell from the clouds.
@@ -352,8 +382,20 @@ window.onload = function(){
 			</div>
 			<img  class="frame-bg" src="assets/IMG_1305.PNG"></img>
 		</div>
-		<div class="frame" style="margin-top: 70%">
+		
+		<div class="art-container" style="margin-top: 80%">
+			<a href="assets/IMG_1254.PNG">
+				<img class="frame-image" src="assets/IMG_1254.PNG"></img>
+			</a>
+		</div>
+		
+		<div class="frame" style="margin-top: 00%">
 			<div class="frame-toplevel">
+				<div class="desc-title">
+				<p>
+				Artist Process
+				</p>
+				</div>
 				<div class="desc-text">
 					<!--
 					<p>
@@ -378,8 +420,20 @@ window.onload = function(){
 			</div>
 			<img  class="frame-bg" src="assets/IMG_1305.PNG"></img>
 		</div>
-		<div class="frame" style="margin-top: 70%">
+
+		<div class="art-container" style="margin-top: 80%">
+			<a href="assets/IMG_9701.PNG">
+				<img class="frame-image" src="assets/IMG_9701.PNG"></img>
+			</a>
+		</div>
+		
+		<div class="frame" style="margin-top: 00%">
 			<div class="frame-toplevel">
+				<div class="desc-title">
+				<p>
+				About the Generation
+				</p>
+				</div>
 				<div class="desc-text">
 					<p> 
 					For the original Super Metal Mons! collection, we only generated around 5,000 mons. We hand-picked and improved 144 of the designs. Each image generated was digitally painted and sculpted to improve the overall design while still leaving the magic of the GAN. This was our first hand curated collection, and it went live pre-minted directly on OpenSea where buyers could pick out their favorites. These mons also featured less distinct rarity types, unlike Gen 2 which introduces a strong element of rarity speculation to give mons a real collectible flavor.
@@ -397,15 +451,11 @@ window.onload = function(){
 			</div>
 			<img  class="frame-bg" src="assets/IMG_1305.PNG"></img>
 		</div>
-		<div class="art-container" style="margin-top: 80%">
-			<img class="frame-image" src="assets/IMG_1254.PNG"></img>
+		
+		<div class="footnote-text" style="margin-top: 80%">
+			<p>TWITTER | DISCORD | OPENSEA</p>
 		</div>
-		<div class="art-container" style="margin-top: 10%">
-			<img class="frame-image" src="assets/IMG_9701.PNG"></img>
-		</div>
-		<div class="footnote-text">
-			<p>BOTTOM TEXT | BOTTOM TEXT | BOTTOM TEXT</p>
-		</div>
+		
 	</div> 
 </body>
 </html>
