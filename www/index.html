@@ -1,6 +1,38 @@
 <style>
 
-@media only screen and (orientation: portrait){
+.sidebar{
+	width: 10%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.toplevel{
+	width: 70%;
+	margin-left: 15%;
+	margin-right: 15%;
+	display: flex;
+	flex-direction: column;
+	
+}
+
+.desc-title{
+	font-family: 'Courier New', monospace;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1vw;
+}
+
+.desc-text{
+	font-family: 'Courier New', monospace;
+	font-size: 1vw;
+}
+
+
+@media only screen and (max-width: 1280px){
 
 .sidebar{
 	display: none;
@@ -8,6 +40,16 @@
 
 .toplevel{
 	width: 100%;
+	margin-left: 0%;
+	margin-right: 0%;
+}
+
+.desc-title{
+	font-size: 1.25vw;
+}
+
+.desc-text{
+	font-size: 1.25vw;
 }
 
 }
@@ -34,28 +76,10 @@ body {
 }
 
 
-.sidebar{
-	width: 10%;
-	position: fixed;
-	top: 0;
-	left: 0;
-	display: flex;
-	flex-direction: column;
-	
-}
 
 .sidebar-image{
 	width: 100%;
 	object-fit: contain;
-}
-
-.toplevel{
-	width: 70%;
-	margin-left: 15%;
-	margin-right: 15%;
-	display: flex;
-	flex-direction: column;
-	
 }
 
 .banner{
@@ -176,16 +200,6 @@ position: absolute;
 	display: none;
 }
 
-.desc-title{
-	font-family: 'Courier New', monospace;
-	font-weight: bold;
-	text-align: center;
-}
-
-
-.desc-text{
-	font-family: 'Courier New', monospace;
-}
 
 .mint-cards-container{
 	
@@ -232,6 +246,10 @@ position: absolute;
 .art-container{
 	width: 50%;
 	margin: auto;
+	font-family: 'Courier New', monospace;
+	font-weight: bold;
+	text-align: center;
+	font-size: 1.2em;
 }
 
 
@@ -243,12 +261,17 @@ var over_state = false;
 
 
 function cimg(id,ov,out){
-	document.getElementById(id).onmouseover = function (){
+	e = document.getElementById(id);
+	if(e == null){
+		return;
+	}
+		
+	e.onmouseover = function (){
 		over_state = true;
 		this.src = ov;	
 		document.querySelector("body").style.cursor = "url(\"assets/IMG_1941.PNG\"), pointer";
 	};
-	document.getElementById(id).onmouseout = function (){
+	e.onmouseout = function (){
 		over_state = false;
 		this.src = out;	
 		if(!mouse_state){
@@ -279,7 +302,7 @@ window.onload = function(){
 			this.style.cursor = "url(\"assets/IMG_1942.PNG\"), pointer";
 		}
 	}
-	
+	/*
 	document.getElementById("wallet").onclick = function (){
 		var wallet_image = document.getElementById("wallet-image");
 		var wallet_info = document.getElementById("wallet-info");
@@ -293,7 +316,7 @@ window.onload = function(){
 			wallet_connected = true;
 			wallet_info.style.display = "block";
 		}
-	};
+	};*/
 };
 </script>
 <html>
@@ -306,12 +329,14 @@ window.onload = function(){
 		<img id="gen1" class="sidebar-image" src="assets/IMG_1987.PNG"></img>
 		<img id="gen2" class="sidebar-image" src="assets/IMG_1985.PNG"></img>
 	</div>
+	<!--
 	<div class="wallet" id="wallet">
 		<div id="wallet-info" class="wallet-info">
 			<p>0x1AB~9B5</p>
 		</div>
 		<img id="wallet-image" class="wallet-image" src="assets/IMG_1277.PNG"></img>
 	</div>
+	-->
 	<div class="toplevel">
 		<div class="banner">
 			<img id="logo" class="banner-image" src="assets/IMG_1314.PNG"></img>
@@ -345,7 +370,7 @@ window.onload = function(){
 			<div class="frame-toplevel">
 				<div class="desc-title">
 				<p>
-				Background
+				Introducing Super Metal Mons!!
 				</p>
 				</div>
 				<div class="desc-text">
@@ -361,7 +386,20 @@ window.onload = function(){
 					A second generation of Super Metal Mons! has been rediscovered and are currently being mined by new collectors and avant venture capitalists alike. 
 					</p>
 				</div>
-				
+				<div class="mint-cards-container">
+					<div class="desc-title">
+						<p>
+							Mint Date: Thursday, March 17
+						</p>
+						<p>
+							Mint Price: 0.1 ETH each
+						</p>
+						<p>
+							Check back soon~
+						</p>
+					</div>
+				</div>
+				<!--
 				<div class="mint-cards-container">
 					<div class="mint-card-item">
 						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
@@ -376,16 +414,18 @@ window.onload = function(){
 						<p>Mint 10</p>
 					</div>
 				</div>
+				-->
 			</div>
 			<img  class="frame-bg" src="assets/IMG_1305.PNG"></img>
 		</div>
 		
-		<div class="art-container" style="margin-top: 80%">
-			<a href="assets/IMG_1254.PNG">
-				<img class="frame-image" src="assets/IMG_1254.PNG"></img>
-			</a>
-		</div>
 		
+		<div class="art-container" style="margin-top: 80%">
+			<a href="assets/IMG_9701.PNG">
+				<img class="frame-image" src="assets/IMG_9701.PNG"></img>
+			</a>
+			<p>Appraising your mon is as easy as seeing how unique and cool it looks.</p>
+		</div>
 		<div class="frame" style="margin-top: 00%">
 			<div class="frame-toplevel">
 				<div class="desc-title">
@@ -419,9 +459,10 @@ window.onload = function(){
 		</div>
 
 		<div class="art-container" style="margin-top: 80%">
-			<a href="assets/IMG_9701.PNG">
-				<img class="frame-image" src="assets/IMG_9701.PNG"></img>
+			<a href="assets/IMG_1254.PNG">
+				<img class="frame-image" src="assets/IMG_1254.PNG"></img>
 			</a>
+			<p>In mons universe you can be a painter, a miner, a collector, or an advanced strategic metal mons player.</p>
 		</div>
 		
 		<div class="frame" style="margin-top: 00%">
@@ -450,7 +491,11 @@ window.onload = function(){
 		</div>
 		
 		<div class="footnote-text" style="margin-top: 80%">
-			<p>TWITTER | DISCORD | OPENSEA</p>
+			<p>
+				<a href="https://twitter.com/supermetalmons">TWITTER</a> | 
+				<a href="https://discord.com/invite/fduKVumws3">DISCORD</a> | 
+				OPENSEA (coming soon!)
+			</p>
 		</div>
 		
 	</div> 
