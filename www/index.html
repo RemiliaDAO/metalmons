@@ -71,10 +71,6 @@
 	display: none;
 }
 
-.wallet{
-	display: none;
-}
-
 }
 
 body {
@@ -272,6 +268,7 @@ position: absolute;
 	font-size: 2em;
 }
 
+
 </style>
 <script>
 var wallet_connected = false;
@@ -321,34 +318,21 @@ window.onload = function(){
 			this.style.cursor = "url(\"assets/IMG_1942.PNG\"), pointer";
 		}
 	}
-	
+	/*
 	document.getElementById("wallet").onclick = function (){
 		var wallet_image = document.getElementById("wallet-image");
 		var wallet_info = document.getElementById("wallet-info");
 		if(wallet_connected){
-			return;
+			wallet_image.src = "assets/IMG_1277.PNG";
+			wallet_connected = false;
+			wallet_info.style.display = "none";
 		}
-		
-		wallet_image.src = "assets/IMG_1494.PNG";
-		wallet_connected = true;
-		wallet_info.style.display = "block";
-		
-		const msg = document.getElementById("wallet-message");
-		if(!window.ethereum || !window.ethereum.isMetaMask){
-			msg.innerHTML = "<p>MetaMask was not detected. Please <a href='https://metamask.io/'>Install MetaMask</a> to continue.</p>"; 
-			wallet_info.innerHTML = "<p>NO WEB3</p>";
-			return;
+		else{
+			wallet_image.src = "assets/IMG_1494.PNG";
+			wallet_connected = true;
+			wallet_info.style.display = "block";
 		}
-		
-		if(window.ethereum.isConnected()){
-			start();
-		}
-		
-		ethereum.on("connect", start);
-		msg.innerHTML = "Connecting to MetaMask....";
-		
-		
-	};
+	};*/
 };
 </script>
 <html>
@@ -361,12 +345,14 @@ window.onload = function(){
 		<img id="gen1" class="sidebar-image" src="assets/IMG_1987.PNG"></img>
 		<img id="gen2" class="sidebar-image" src="assets/IMG_1985.PNG"></img>
 	</div>
+	<!--
 	<div class="wallet" id="wallet">
 		<div id="wallet-info" class="wallet-info">
 			<p>0x1AB~9B5</p>
 		</div>
 		<img id="wallet-image" class="wallet-image" src="assets/IMG_1277.PNG"></img>
 	</div>
+	-->
 	<div class="toplevel" >
 		<div class="banner" id="top">
 			<img id="logo" class="banner-image" src="assets/IMG_1314.PNG"></img>
@@ -425,13 +411,16 @@ window.onload = function(){
 					<div class="mint-cards-container">
 						<div class="desc-title">
 							<p>
-								RIGHT NOW - SMM gen 1 holders
+								Friday 3-18 - 1PM ET - SMM gen 1 holders
 							</p>
 							<p>
 								Saturday 3-19 - 1PM ET - Whitelist mint
 							</p>
 							<p>
 								Saturday 3-18 - 5PM ET - Public mint
+							</p>
+							<p>
+								Check back soon~
 							</p>
 						</div>
 					</div>
@@ -469,7 +458,7 @@ window.onload = function(){
 					<div class="mint-cards-container">
 						<div class="desc-title">
 							<p>
-								RIGHT NOW - SMM gen 1 holders 
+								Friday 3-18 - 1PM ET - SMM gen 1 holders 
 							</p>
 							<p>
 								Saturday 3-19 - 1PM ET - Whitelist mint
@@ -477,26 +466,16 @@ window.onload = function(){
 							<p>
 								Saturday 3-18 - 5PM ET - Public mint
 							</p>
+							<p>
+								Check back soon~
+							</p>
 						</div>
 					</div>
 				</div>	
 				<img  class="frame-bg" src="assets/IMG_1305.PNG"></img>
 			</div>
 		</div>
-			<div class="frame" style="margin-top: 70%">
-				<div class="frame-toplevel">
-					<div class="desc-title" id="wallet-message">
-					<p>Not connected to Web3...</p>
-					</div>
-					<div class="mint-cards-container">
-						<div class="mint-card-item">
-						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
-						<p>Mint 1</p>
-					</div>
-					</div>
-				</div>	
-				<img  class="frame-bg" src="assets/IMG_1305.PNG"></img>
-			</div>
+		
 		<div class="art-container" style="margin-top: 80%">
 			<a href="assets/IMG_9701.PNG">
 				<img class="frame-image" src="assets/IMG_9701.PNG"></img>
