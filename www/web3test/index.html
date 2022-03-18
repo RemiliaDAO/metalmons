@@ -228,7 +228,7 @@ async function mint(x){
 	case 2:
 		price = BigNumber(0.03).multipliedBy("1e18").toNumber();
 		try{
-			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+			gas = await contract.methods.mint3().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch{
 			console.log("estg failed");
@@ -241,7 +241,7 @@ async function mint(x){
 	case 3:
 		price = BigNumber(0.05).multipliedBy("1e18").toNumber();
 		try{
-			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+			gas = await contract.methods.mint5().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch{
 			console.log("estg failed");
