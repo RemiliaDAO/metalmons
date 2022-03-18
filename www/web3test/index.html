@@ -180,7 +180,7 @@ async function mint_presale(){
 
 	const web3 = new Web3(window.ethereum);
 	contract = new web3.eth.Contract(ABI, ADDRESS);
-	const price = BigNumber(0.009).multipliedBy("1e18").toNumber();
+	const price = BigNumber(0.0009).multipliedBy("1e18").toNumber();
 	
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
@@ -213,7 +213,7 @@ async function mint(x){
 	
 	switch(x){
 	case 1:
-		price = BigNumber(0.01).multipliedBy("1e18").toNumber();
+		price = BigNumber(0.001).multipliedBy("1e18").toNumber();
 		try{
 			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
@@ -226,9 +226,9 @@ async function mint(x){
 		contract.methods.mint1().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
 		return;
 	case 2:
-		price = BigNumber(0.03).multipliedBy("1e18").toNumber();
+		price = BigNumber(0.005).multipliedBy("1e18").toNumber();
 		try{
-			gas = await contract.methods.mint3().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+			gas = await contract.methods.mint5().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch{
 			console.log("estg failed");
@@ -239,9 +239,9 @@ async function mint(x){
 		contract.methods.mint3().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
 		return;
 	case 3:
-		price = BigNumber(0.05).multipliedBy("1e18").toNumber();
+		price = BigNumber(0.01).multipliedBy("1e18").toNumber();
 		try{
-			gas = await contract.methods.mint5().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+			gas = await contract.methods.mint10().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch{
 			console.log("estg failed");
