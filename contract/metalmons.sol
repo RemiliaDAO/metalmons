@@ -78,7 +78,7 @@ contract SuperMetalMons is ERC721Enumerable, AccessControl, Ownable {
 		
 		uint256 i = 0;
 		for(; i < _contract.length; i++){
-			if(_contract[i].balanceOf(msg.sender)){
+			if(_contract[i].balanceOf(msg.sender) > 0){
 				uint256 held_tokenID = _contract[i].tokenOfOwnerByIndex(msg.sender,0);
 				if(blacklist[i][held_tokenID]){
 					revert("Multiple mints are not allowed.");
