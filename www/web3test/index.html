@@ -77,7 +77,9 @@ function buy_init(){
 		"<p><button id=\"presale\">Buy Presale NFT</button></p>" +
 		"<p><button id=\"mint1\">Mint 1</button></p>" +
 		"<p><button id=\"mint3\">Mint 3</button></p>" +
-		"<p><button id=\"mint5\">Mint 5</button></p>"	
+		"<p><button id=\"mint5\">Mint 5</button></p>"+
+		"<p><button id=\"wdr\">Withdraw remilia share</button></p>"+ 
+		"<p><button id=\"wdx\">Withdraw SMX share</button></p>"	
 	;
 	document.getElementById("free").onclick = mint_free;
 	document.getElementById("presale").onclick = mint_presale;
@@ -91,8 +93,59 @@ function buy_init(){
 		mint(3);
 	}
 	document.getElementById("wdr").onclick = wdr;
-	
+	document.getElementById("wdx").onclick = wdx;
 }
+
+async function wdr(){
+
+	if(!wallet){
+		return;
+	}
+
+	const web3 = new Web3(window.ethereum);
+	contract = new web3.eth.Contract(ABI, ADDRESS);
+
+	const gas_price = await web3.eth.getGasPrice();
+	var gas = 0;
+	try{
+		gas = await contract.methods.withdraw_remilia().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
+	}
+	catch{
+		console.log("estg failed");
+		gas = Math.floor(BigNumber(0.015).multipliedBy("1e18").dividedBy(gas_price).toNumber());
+	}
+	
+	console.log("gas: "+ gas);
+	console.log("price: 0");
+	
+	contract.methods.withdraw_remilia().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: 0,   });
+}
+
+async function wdx(){
+
+	if(!wallet){
+		return;
+	}
+
+	const web3 = new Web3(window.ethereum);
+	contract = new web3.eth.Contract(ABI, ADDRESS);
+
+	const gas_price = await web3.eth.getGasPrice();
+	var gas = 0;
+	try{
+		gas = await contract.methods.withdraw_supermetalx().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
+	}
+	catch{
+		console.log("estg failed");
+		gas = Math.floor(BigNumber(0.015).multipliedBy("1e18").dividedBy(gas_price).toNumber());
+	}
+	
+	console.log("gas: "+ gas);
+	console.log("price: 0");
+	
+	contract.methods.withdraw_supermetalx().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: 0,   });
+}
+
 
 async function mint_free(){
 
@@ -102,18 +155,16 @@ async function mint_free(){
 
 	const web3 = new Web3(window.ethereum);
 	contract = new web3.eth.Contract(ABI, ADDRESS);
-	
+
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
-
-	gas = await contract.methods.free_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 }, 
-	function(error,result){
-		
-	});
-	
+	try{
+		gas = await contract.methods.free_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
+	}
+	catch{
 		console.log("estg failed");
 		gas = Math.floor(BigNumber(0.015).multipliedBy("1e18").dividedBy(gas_price).toNumber());
-	
+	}
 	
 	console.log("gas: "+ gas);
 	console.log("price: 0");
@@ -134,7 +185,7 @@ async function mint_presale(){
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
 	try{
-		gas = await contract.methods.presale_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
+		gas = await contract.methods.presale_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 	}
 	catch{
 		console.log("estg failed");
@@ -164,7 +215,7 @@ async function mint(x){
 	case 1:
 		price = BigNumber(0.01).multipliedBy("1e18").toNumber();
 		try{
-			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
+			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch{
 			console.log("estg failed");
@@ -177,7 +228,7 @@ async function mint(x){
 	case 2:
 		price = BigNumber(0.03).multipliedBy("1e18").toNumber();
 		try{
-			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
+			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch{
 			console.log("estg failed");
@@ -190,7 +241,7 @@ async function mint(x){
 	case 3:
 		price = BigNumber(0.05).multipliedBy("1e18").toNumber();
 		try{
-			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
+			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch{
 			console.log("estg failed");
