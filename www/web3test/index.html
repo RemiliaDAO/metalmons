@@ -125,7 +125,7 @@ async function mint_presale(){
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
 	try{
-		gas = await contract.methods.presale_mint(n).estimateGas({ gasPrice: gas_price , from: wallet, value: price })
+		gas = await contract.methods.presale_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
 	}
 	catch{
 		console.log("estg failed");
@@ -135,7 +135,7 @@ async function mint_presale(){
 	console.log("gas: "+ gas);
 	console.log("price: "+ price);
 	
-	contract.methods.presale_mint(n).send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
+	contract.methods.presale_mint().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
 }
 
 async function mint(x){
