@@ -162,7 +162,7 @@ async function mint(x){
 	
 	switch(x){
 	case 1:
-		const price = BigNumber(0.01).multipliedBy("1e18").toNumber();
+		price = BigNumber(0.01).multipliedBy("1e18").toNumber();
 		try{
 			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
 		}
@@ -175,7 +175,7 @@ async function mint(x){
 		contract.methods.mint1().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
 		return;
 	case 2:
-		const price = BigNumber(0.03).multipliedBy("1e18").toNumber();
+		price = BigNumber(0.03).multipliedBy("1e18").toNumber();
 		try{
 			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
 		}
@@ -188,7 +188,7 @@ async function mint(x){
 		contract.methods.mint3().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
 		return;
 	case 3:
-		const price = BigNumber(0.05).multipliedBy("1e18").toNumber();
+		price = BigNumber(0.05).multipliedBy("1e18").toNumber();
 		try{
 			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price })
 		}
