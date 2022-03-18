@@ -237,7 +237,7 @@ async function mint(x){
 		}
 		console.log("gas: "+ gas);
 		console.log("price: "+ price);
-		contract.methods.mint3().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
+		contract.methods.mint5().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
 		return;
 	case 3:
 		price = BigNumber(0.01).multipliedBy("1e18").toNumber();
@@ -250,7 +250,7 @@ async function mint(x){
 		}
 		console.log("gas: "+ gas);
 		console.log("price: "+ price);
-		contract.methods.mint5().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
+		contract.methods.mint10().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
 		return;
 	}
 	
