@@ -340,7 +340,7 @@ window.onload = function(){
 		wallet_info.style.display = "block";
 		
 		const msg = document.getElementById("wallet-message");
-		if(!window.ethereum || !window.ethereum.isMetaMask){
+		if(!window.ethereum){
 			msg.innerHTML = "<p>MetaMask was not detected. Please <a href='https://metamask.io/'>Install MetaMask</a> to continue.</p>"; 
 			wallet_info.innerHTML = "<p>NO WEB3</p>";
 			return;
@@ -563,10 +563,17 @@ async function mint_free(){
 		</div>
 			<div class="frame" style="margin-top: 70%">
 				<div class="frame-toplevel">
-					<div class="desc-title" >
-					<p id="wallet-message">Not connected to Web3...</p>
-					<p id="mint_count"></p>
-					<p id="error-message"></p>
+					<div class="bleed1">
+						
+						<img id="wallet-image" class="wallet-image" src="assets/IMG_1277.PNG"></img>
+				
+					</div>
+					<div class="bleed1h">
+						<div class="desc-title" >
+							<p id="wallet-message">Not connected to Web3...</p>
+							<p id="mint_count"></p>
+							<p id="error-message"></p>
+						</div>
 					</div>
 					
 					<div class="mint-cards-container">
