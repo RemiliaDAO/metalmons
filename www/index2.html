@@ -371,7 +371,7 @@ async function start(){
 			info.innerHTML = "Connected";
 			wallet = accounts[0];
 			card = document.getElementById("mc1");
-			card.onclick = function(){ console.log("aaa");};//mint_free();
+			card.onclick = function(){ mint_free();};//
 		})
 		.catch( function(error){
 			if(error.code == 4001){
@@ -411,11 +411,14 @@ async function mint_free(){
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
 	
-	gas = await contract.methods.free_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 },
-	function(error, result){
+	try {
+		gas = await contract.methods.free_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
+	}
+	catch (error){
 		console.log(error);
-		console.log(result);
-	});
+		return;
+	}
+	
 	
 	contract.methods.free_mint().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: 0,   });
 }
