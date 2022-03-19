@@ -323,6 +323,7 @@ function wallet_connect(){
 		wallet_info.style.display = "block";
 		
 		const msg = document.getElementById("wallet-message");
+
 		if(!window.ethereum || !window.ethereum.isMetaMask){
 			msg.innerHTML = "<p>MetaMask was not detected. Please <a href='https://metamask.io/'>Install MetaMask</a> to continue.</p>"; 
 			wallet_info.innerHTML = "<p>NO WEB3</p>";
@@ -348,6 +349,9 @@ window.onload = function(){
 	cimg("mc1","assets/IMG_1644.PNG","assets/IMG_1489.PNG");
 	cimg("mc2","assets/IMG_1650.PNG","assets/IMG_1488.PNG");
 	cimg("mc3","assets/IMG_1651.PNG","assets/IMG_1487.PNG");
+	cimg("mc1_1","assets/IMG_1644.PNG","assets/IMG_1489.PNG");
+	cimg("mc2_1","assets/IMG_1650.PNG","assets/IMG_1488.PNG");
+	cimg("mc3_1","assets/IMG_1651.PNG","assets/IMG_1487.PNG");
 	cimg("portal","assets/IMG_1313.PNG","assets/IMG_1312.PNG");
 	
 	b = document.querySelector("body");
@@ -372,11 +376,12 @@ async function start(){
 
 	const info = document.getElementById("wallet-info");
 	const msg = document.getElementById("wallet-message");
+	const msg2 = document.getElementById("wallet-message2");
 	msg.innerHTML = "Connected to MetaMask.";
 	
 	window.ethereum.request({	method: "eth_requestAccounts" })
 		.then( function( accounts ){
-			msg.innerHTML = "Connected to MetaMask. Wallet ID: " + accounts[0];
+			msg2.innerHTML = msg.innerHTML = "Connected to MetaMask. Wallet ID: " + accounts[0];
 			info.innerHTML = "Connected";
 			wallet = accounts[0];
 			document.getElementById("mobileconnect").style.display = "none";
@@ -388,9 +393,19 @@ async function start(){
 			
 			
 			card = document.getElementById("mc1");
-			card.onclick = function(){ mint_presale();};//
+			card.onclick = function(){ mint(1);};//
 			card = document.getElementById("mc1_1");
-			card.onclick = function(){ mint_presale();};//
+			card.onclick = function(){ mint(1);};//
+			
+			card = document.getElementById("mc2");
+			card.onclick = function(){ mint(2);};//
+			card = document.getElementById("mc2_1");
+			card.onclick = function(){ mint(2);};//
+			
+			card = document.getElementById("mc3");
+			card.onclick = function(){ mint(3);};//
+			card = document.getElementById("mc3_1");
+			card.onclick = function(){ mint(3);};//
 		})
 		.catch( function(error){
 			if(error.code == 4001){
@@ -416,6 +431,63 @@ async function start(){
 	total_supply = await contract.methods.totalSupply().call();
 	
 	document.getElementById("mint_count").innerHTML = "NFTs minted: " + total_supply + "/" + 777;
+}
+
+async function mint(x){
+
+	if(!wallet){
+		return;
+	}
+
+	const web3 = new Web3(window.ethereum);
+	contract = new web3.eth.Contract(ABI, ADDRESS);
+	
+	
+	const gas_price = await web3.eth.getGasPrice();
+	var gas = 0;
+	
+	switch(x){
+	case 1:
+		price = BigNumber(0.1).multipliedBy("1e18").toNumber();
+		try{
+			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+		}
+		catch(error){
+			document.getElementById("error-message2").innerHTML = 
+				document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+			return;
+		}
+
+		contract.methods.mint1().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
+		return;
+	case 2:
+		price = BigNumber(0.5).multipliedBy("1e18").toNumber();
+		try{
+			gas = await contract.methods.mint5().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+		}
+		catch(error){
+			document.getElementById("error-message2").innerHTML = 
+				document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+			return;
+		}
+
+		contract.methods.mint5().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
+		return;
+	case 3:
+		price = BigNumber(1.0).multipliedBy("1e18").toNumber();
+		try{
+			gas = await contract.methods.mint10().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+		}
+		catch(error){
+			document.getElementById("error-message2").innerHTML = 
+				document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+			return;
+		}
+		contract.methods.mint10().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
+		return;
+	}
+	
+	
 }
 
 async function mint_presale(){
@@ -602,7 +674,7 @@ async function mint_free(){
 						<div id="wallet2">
 							<div class="desc-title" >
 								<img id="mobileconnect" class="wallet-image2" src="assets/IMG_1277.PNG"></img>
-								<p id="wallet-message">Connect your wallet on Metamask to mint</p>
+								<p id="wallet-message2">Connect your wallet on Metamask to mint</p>
 								<p id="mint_count"></p>
 								<p id="error-message"></p>
 							</div>
@@ -610,15 +682,15 @@ async function mint_free(){
 						<div id="cardinner" style="display: none">
 									<div class="mint-cards-container">
 							<div class="mint-card-item">
-							<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
+							<img id="mc1_1" class="frame-image" src="assets/IMG_1489.PNG"></img>
 							<p>Mint 1</p>
 							</div>
 							<div class="mint-card-item">
-								<img id="mc2" class="frame-image" src="assets/IMG_1488.PNG"></img>
+								<img id="mc2_1" class="frame-image" src="assets/IMG_1488.PNG"></img>
 								<p>Mint 5</p>
 							</div>
 							<div class="mint-card-item">
-								<img id="mc3" class="frame-image" src="assets/IMG_1487.PNG"></img>
+								<img id="mc3_1" class="frame-image" src="assets/IMG_1487.PNG"></img>
 								<p>Mint 10</p>
 							</div>
 						</div>
