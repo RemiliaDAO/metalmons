@@ -334,7 +334,7 @@ window.onload = function(){
 		}
 	}
 	
-	document.getElementById("wallet").onclick = function (){
+	document.getElementById("wallet2").onclick = document.getElementById("wallet").onclick = function (){
 		var wallet_image = document.getElementById("wallet-image");
 		var wallet_info = document.getElementById("wallet-info");
 		if(wallet_connected){
@@ -602,7 +602,7 @@ async function mint_free(){
 			<div class="frame" style="margin-top: 70%">
 				<div class="frame-toplevel">
 					<div class="bleed1">
-						<div id="wallet">
+						<div id="wallet2">
 							<div class="desc-title" >
 								<img id="mobileconnect" class="wallet-image2" src="assets/IMG_1277.PNG"></img>
 								<p id="wallet-message">Not connected to Web3...</p>
