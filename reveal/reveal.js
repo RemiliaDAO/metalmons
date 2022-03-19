@@ -5,4 +5,4 @@ function GetContract( address ) {
 }
 
 var contract = GetContract("0x17aBd4Cc1382397eC2B675f98621C3Ba809897DE");
-console.log(contract.totalSupply());
+console.log(contract.totalSupply.call());
