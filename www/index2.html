@@ -453,8 +453,8 @@ async function mint(x){
 			gas = await contract.methods.mint1().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch(error){
-			document.getElementById("error-message2").innerHTML = 
-				document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+			document.getElementById("error-message2").innerHTML = error.message.split("\n")[0];
+			document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
 			return;
 		}
 
@@ -466,8 +466,8 @@ async function mint(x){
 			gas = await contract.methods.mint5().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch(error){
-			document.getElementById("error-message2").innerHTML = 
-				document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+			document.getElementById("error-message2").innerHTML = error.message.split("\n")[0];
+			document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
 			return;
 		}
 
@@ -479,8 +479,8 @@ async function mint(x){
 			gas = await contract.methods.mint10().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
 		}
 		catch(error){
-			document.getElementById("error-message2").innerHTML = 
-				document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+			document.getElementById("error-message2").innerHTML = error.message.split("\n")[0];
+			document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
 			return;
 		}
 		contract.methods.mint10().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
@@ -683,15 +683,15 @@ async function mint_free(){
 									<div class="mint-cards-container">
 							<div class="mint-card-item">
 							<img id="mc1_1" class="frame-image" src="assets/IMG_1489.PNG"></img>
-							<p>Mint 1</p>
+							<p>Mint 1 (0.1ETH)</p>
 							</div>
 							<div class="mint-card-item">
 								<img id="mc2_1" class="frame-image" src="assets/IMG_1488.PNG"></img>
-								<p>Mint 5</p>
+								<p>Mint 5 (0.5ETH)</p>
 							</div>
 							<div class="mint-card-item">
 								<img id="mc3_1" class="frame-image" src="assets/IMG_1487.PNG"></img>
-								<p>Mint 10</p>
+								<p>Mint 10 (1.0ETH)</p>
 							</div>
 						</div>
 						</div>
@@ -707,15 +707,15 @@ async function mint_free(){
 					<div class="mint-cards-container">
 						<div class="mint-card-item">
 						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
-						<p>Mint 1</p>
+						<p>Mint 1 (0.1ETH)</p>
 						</div>
 						<div class="mint-card-item">
 							<img id="mc2" class="frame-image" src="assets/IMG_1488.PNG"></img>
-							<p>Mint 5</p>
+							<p>Mint 5 (0.5ETH)</p>
 						</div>
 						<div class="mint-card-item">
 							<img id="mc3" class="frame-image" src="assets/IMG_1487.PNG"></img>
-							<p>Mint 10</p>
+							<p>Mint 10 (1.0ETH)</p>
 						</div>
 					</div>
 					</div>
