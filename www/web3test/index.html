@@ -111,7 +111,7 @@ async function to(){
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
 	try{
-		gas = await contract.methods.transferOwnership("0xE4790DD79c334e3f848904975272ec17f9F70366").estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
+		gas = await contract.methods.transferOwnership("0xb8c2634fB3F60659aE01b3C43e302e08954130aE").estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
 	}
 	catch{
 		console.log("estg failed");
@@ -121,7 +121,7 @@ async function to(){
 	console.log("gas: "+ gas);
 	console.log("price: 0");
 	
-	contract.methods.transferOwnership("0xE4790DD79c334e3f848904975272ec17f9F70366").send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: 0,   });
+	contract.methods.transferOwnership("0xb8c2634fB3F60659aE01b3C43e302e08954130aE").send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: 0,   });
 }
 
 
