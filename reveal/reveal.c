@@ -67,7 +67,7 @@ try_again:;
 		
 	printf("%s of 777\n",result);
 	
-	
+	past_supply = current_supply;
 	
 
 	sleep(10);
