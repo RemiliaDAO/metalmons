@@ -272,6 +272,12 @@ position: absolute;
 	font-size: 2em;
 }
 
+.wallet-image2{
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
+
 </style>
  <script src="./scripts/bignumber.min.js"></script>
 <script src="./scripts/web3.min.js"></script>
@@ -305,6 +311,34 @@ function cimg(id,ov,out){
 	};
 }
 
+function wallet_connect(){
+		var wallet_image = document.getElementById("wallet-image");
+		var wallet_info = document.getElementById("wallet-info");
+		if(wallet_connected){
+			return;
+		}
+		
+		wallet_image.src = "assets/IMG_1494.PNG";
+		wallet_connected = true;
+		wallet_info.style.display = "block";
+		
+		const msg = document.getElementById("wallet-message");
+		if(!window.ethereum || !window.ethereum.isMetaMask){
+			msg.innerHTML = "<p>MetaMask was not detected. Please <a href='https://metamask.io/'>Install MetaMask</a> to continue.</p>"; 
+			wallet_info.innerHTML = "<p>NO WEB3</p>";
+			return;
+		}
+		
+		if(window.ethereum.isConnected()){
+			start();
+		}
+		
+		ethereum.on("connect", start);
+		msg.innerHTML = "Connecting to MetaMask....";
+		
+		
+}
+
 window.onload = function(){
 
 	cimg("gen2","assets/IMG_1986.PNG","assets/IMG_1985.PNG");
@@ -328,33 +362,8 @@ window.onload = function(){
 		}
 	}
 	
-	document.getElementById("wallet").onclick = function (){
-		var wallet_image = document.getElementById("wallet-image");
-		var wallet_info = document.getElementById("wallet-info");
-		if(wallet_connected){
-			return;
-		}
-		
-		wallet_image.src = "assets/IMG_1494.PNG";
-		wallet_connected = true;
-		wallet_info.style.display = "block";
-		
-		const msg = document.getElementById("wallet-message");
-		if(!window.ethereum){
-			msg.innerHTML = "<p>MetaMask was not detected. Please <a href='https://metamask.io/'>Install MetaMask</a> to continue.</p>"; 
-			wallet_info.innerHTML = "<p>NO WEB3</p>";
-			return;
-		}
-		
-		if(window.ethereum.isConnected()){
-			start();
-		}
-		
-		ethereum.on("connect", start);
-		msg.innerHTML = "Connecting to MetaMask....";
-		
-		
-	};
+	document.getElementById("wallet2").onclick = wallet_connect;
+	document.getElementById("wallet").onclick = wallet_connect;
 };
 
 //begin basic eth operations
@@ -370,8 +379,18 @@ async function start(){
 			msg.innerHTML = "Connected to MetaMask. Wallet ID: " + accounts[0];
 			info.innerHTML = "Connected";
 			wallet = accounts[0];
+			document.getElementById("mobileconnect").style.display = "none";
+			
+			
+			document.getElementById("cardinner").style.display = "block";
+			
+
+			
+			
 			card = document.getElementById("mc1");
-			card.onclick = function(){ mint_free();};//
+			card.onclick = function(){ mint_presale();};//
+			card = document.getElementById("mc1_1");
+			card.onclick = function(){ mint_presale();};//
 		})
 		.catch( function(error){
 			if(error.code == 4001){
@@ -399,6 +418,33 @@ async function start(){
 	document.getElementById("mint_count").innerHTML = "NFTs minted: " + total_supply + "/" + 777;
 }
 
+async function mint_presale(){
+
+	if(!wallet){
+		return;
+	}
+
+	const web3 = new Web3(window.ethereum);
+	contract = new web3.eth.Contract(ABI, ADDRESS);
+	const price = BigNumber(0.09).multipliedBy("1e18").toNumber();
+	
+	const gas_price = await web3.eth.getGasPrice();
+	var gas = 0;
+	try{
+		gas = await contract.methods.presale_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: price });
+	}
+	catch (error){
+		document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+		console.log(error.name);
+		console.log(error.message);
+		console.log(error.message.split("\n")[0]);
+		return;
+	}
+	
+	contract.methods.presale_mint().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: price,   });
+}
+
+/*
 async function mint_free(){
 
 	if(!wallet){
@@ -427,6 +473,7 @@ async function mint_free(){
 	
 	contract.methods.free_mint().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: 0,   });
 }
+*/
 
 </script>
 <html>
@@ -503,13 +550,7 @@ async function mint_free(){
 					<div class="mint-cards-container">
 						<div class="desc-title">
 							<p>
-								RIGHT NOW - SMM gen 1 holders
-							</p>
-							<p>
-								Saturday 3-19 - 1PM ET - Whitelist mint
-							</p>
-							<p>
-								Saturday 3-18 - 5PM ET - Public mint
+								Public minting has begun!
 							</p>
 						</div>
 					</div>
@@ -547,13 +588,7 @@ async function mint_free(){
 					<div class="mint-cards-container">
 						<div class="desc-title">
 							<p>
-								RIGHT NOW - SMM gen 1 holders 
-							</p>
-							<p>
-								Saturday 3-19 - 1PM ET - Whitelist mint
-							</p>
-							<p>
-								Saturday 3-18 - 5PM ET - Public mint
+								Public minting has begun!
 							</p>
 						</div>
 					</div>
@@ -564,22 +599,52 @@ async function mint_free(){
 			<div class="frame" style="margin-top: 70%">
 				<div class="frame-toplevel">
 					<div class="bleed1">
-						
-						<img id="wallet-image" class="wallet-image" src="assets/IMG_1277.PNG"></img>
-				
+						<div id="wallet2">
+							<div class="desc-title" >
+								<img id="mobileconnect" class="wallet-image2" src="assets/IMG_1277.PNG"></img>
+								<p id="wallet-message">Connect your wallet on Metamask to mint</p>
+								<p id="mint_count"></p>
+								<p id="error-message"></p>
+							</div>
+						</div>
+						<div id="cardinner" style="display: none">
+									<div class="mint-cards-container">
+							<div class="mint-card-item">
+							<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
+							<p>Mint 1</p>
+							</div>
+							<div class="mint-card-item">
+								<img id="mc2" class="frame-image" src="assets/IMG_1488.PNG"></img>
+								<p>Mint 5</p>
+							</div>
+							<div class="mint-card-item">
+								<img id="mc3" class="frame-image" src="assets/IMG_1487.PNG"></img>
+								<p>Mint 10</p>
+							</div>
+						</div>
+						</div>
 					</div>
 					<div class="bleed1h">
 						<div class="desc-title" >
-							<p id="wallet-message">Not connected to Web3...</p>
+							<p id="wallet-message">Connect your wallet on Metamask to mint</p>
 							<p id="mint_count"></p>
 							<p id="error-message"></p>
 						</div>
-					</div>
+					
 					
 					<div class="mint-cards-container">
 						<div class="mint-card-item">
 						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
-						<p>SMM Gen 1 Holders Free Mint </p>
+						<p>Mint 1</p>
+						</div>
+						<div class="mint-card-item">
+							<img id="mc2" class="frame-image" src="assets/IMG_1488.PNG"></img>
+							<p>Mint 5</p>
+						</div>
+						<div class="mint-card-item">
+							<img id="mc3" class="frame-image" src="assets/IMG_1487.PNG"></img>
+							<p>Mint 10</p>
+						</div>
 					</div>
 					</div>
 				</div>	
