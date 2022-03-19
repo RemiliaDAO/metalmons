@@ -359,14 +359,17 @@ window.onload = function(){
 var wallet = null;
 async function start(){
 
+	const info = document.getElementById("wallet-info");
 	const msg = document.getElementById("wallet-message");
 	msg.innerHTML = "Connected to MetaMask.";
 	
 	window.ethereum.request({	method: "eth_requestAccounts" })
 		.then( function( accounts ){
 			msg.innerHTML = "Connected to MetaMask. Wallet ID: " + accounts[0];
+			info.innerHTML = "Connected";
 			wallet = accounts[0];
-			buy_init();
+			card = document.getElementById("mc1");
+			card.onclick = mint_free();
 		})
 		.catch( function(error){
 			if(error.code == 4001){
@@ -393,6 +396,28 @@ async function start(){
 	
 	document.getElementById("mint_count").innerHTML = "NFTs minted: " + total_supply + "/" + 777;
 }
+
+async function mint_free(){
+
+	if(!wallet){
+		return;
+	}
+
+	const web3 = new Web3(window.ethereum);
+	contract = new web3.eth.Contract(ABI, ADDRESS);
+
+	const gas_price = await web3.eth.getGasPrice();
+	var gas = 0;
+	
+	gas = await contract.methods.free_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 },
+	function(error, result){
+		console.log(error);
+		console.log(result);
+	});
+	
+	contract.methods.free_mint().send({ gas: gas, from: wallet, gasPrice: gas_price.toString(), value: 0,   });
+}
+
 </script>
 <html>
 <head>
@@ -536,7 +561,7 @@ async function start(){
 					<div class="mint-cards-container">
 						<div class="mint-card-item">
 						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
-						<p>Mint 1</p>
+						<p>SMM Gen 1 Holders Free Mint </p>
 					</div>
 					</div>
 				</div>	
