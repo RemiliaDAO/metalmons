@@ -210,7 +210,7 @@ async function mint_presale(){
 
 	const web3 = new Web3(window.ethereum);
 	contract = new web3.eth.Contract(ABI, ADDRESS);
-	const price = BigNumber(0.0009).multipliedBy("1e18").toNumber();
+	const price = BigNumber(0.09).multipliedBy("1e18").toNumber();
 	
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
