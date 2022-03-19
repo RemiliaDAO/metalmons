@@ -272,6 +272,12 @@ position: absolute;
 	font-size: 2em;
 }
 
+.wallet-image2{
+	width: 50%;
+	margin: auto;
+	text-align: center;
+}
+
 </style>
  <script src="./scripts/bignumber.min.js"></script>
 <script src="./scripts/web3.min.js"></script>
@@ -370,6 +376,16 @@ async function start(){
 			msg.innerHTML = "Connected to MetaMask. Wallet ID: " + accounts[0];
 			info.innerHTML = "Connected";
 			wallet = accounts[0];
+			document.getElementById("mobileconnect").style.display = "hidden";
+			
+			
+			document.getElementById("cardinner").innerHTML = "			<div class=\"mint-cards-container\"> " +
+						"<div class=\"mint-card-item\">" +
+						"img id=\"mc1\" class=\"frame-image\" src=\"assets/IMG_1489.PNG\"></img>" +
+						"<p style=\"font-size: 0.8em\">Whitelist Members Discounted Mint (0.09ETH)</p>" +
+						"</div>" +
+					"</div>";
+			
 			card = document.getElementById("mc1");
 			card.onclick = function(){ mint_presale();};//
 		})
@@ -585,16 +601,32 @@ async function mint_free(){
 		</div>
 			<div class="frame" style="margin-top: 70%">
 				<div class="frame-toplevel">
-					<div class="desc-title" >
-						<p id="wallet-message">Not connected to Web3...</p>
-						<p id="mint_count"></p>
-						<p id="error-message"></p>
+					<div class="bleed1">
+						<div id="wallet">
+							<div class="desc-title" >
+								<img id="mobileconnect" class="wallet-image2" src="assets/IMG_1277.PNG"></img>
+								<p id="wallet-message">Not connected to Web3...</p>
+								<p id="mint_count"></p>
+								<p id="error-message"></p>
+							</div>
+						</div>
+						<div id="cardinner">
+						
+						</div>
 					</div>
+					<div class="bleed1h">
+						<div class="desc-title" >
+							<p id="wallet-message">Not connected to Web3...</p>
+							<p id="mint_count"></p>
+							<p id="error-message"></p>
+						</div>
+					
 					
 					<div class="mint-cards-container">
 						<div class="mint-card-item">
 						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
 						<p style="font-size: 0.8em">Whitelist Members Discounted Mint (0.09ETH)</p>
+						</div>
 					</div>
 					</div>
 				</div>	
