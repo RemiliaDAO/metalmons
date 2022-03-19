@@ -50,7 +50,7 @@ try_again:;
 		system(result);
 		snprintf(result,sizeof(result),"cp smm/g2smm%03d.PNG ../www/mons/g2smm%03d.png",i,i);
 		system(result);
-		snprintf(result,sizeof(result),"cp json/%d ../www/mons/json/%d",i);
+		snprintf(result,sizeof(result),"cp json/%d ../www/mons/json/%d",i,i);
 		system(result);
 		snprintf(result,sizeof(result),"git add ../www/mons/g2smm%03d.mp4",i);
 		system(result);
