@@ -371,7 +371,7 @@ async function start(){
 			info.innerHTML = "Connected";
 			wallet = accounts[0];
 			card = document.getElementById("mc1");
-			card.onclick = mint_free();
+			card.onclick = function(){ console.log("aaa");};//mint_free();
 		})
 		.catch( function(error){
 			if(error.code == 4001){
