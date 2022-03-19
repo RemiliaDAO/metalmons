@@ -417,9 +417,9 @@ async function mint_free(){
 		gas = await contract.methods.free_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
 	}
 	catch (error){
-		document.getElementById("error-message").innerHTML = console.log(error.name);
-		console.log(error.name);
-		console.log(error.message);
+		document.getElementById("error-message").innerHTML = error.message.split("\n")[0];
+		//console.log(error.name);
+		//console.log(error.message);
 		return;
 	}
 	
