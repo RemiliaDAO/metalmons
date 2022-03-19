@@ -274,6 +274,10 @@ position: absolute;
 
 </style>
 <script>
+const ADDRESS = "0x17aBd4Cc1382397eC2B675f98621C3Ba809897DE";
+const ABI = [{"inputs":[{"internalType":"address","name":"remilia_wallet","type":"address"},{"internalType":"address","name":"supermetalx_wallet","type":"address"}],"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"approved","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"owner","type":"address"},{"indexed":true,"internalType":"address","name":"operator","type":"address"},{"indexed":false,"internalType":"bool","name":"approved","type":"bool"}],"name":"ApprovalForAll","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"previousOwner","type":"address"},{"indexed":true,"internalType":"address","name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"previousAdminRole","type":"bytes32"},{"indexed":true,"internalType":"bytes32","name":"newAdminRole","type":"bytes32"}],"name":"RoleAdminChanged","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleGranted","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"bytes32","name":"role","type":"bytes32"},{"indexed":true,"internalType":"address","name":"account","type":"address"},{"indexed":true,"internalType":"address","name":"sender","type":"address"}],"name":"RoleRevoked","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"internalType":"address","name":"from","type":"address"},{"indexed":true,"internalType":"address","name":"to","type":"address"},{"indexed":true,"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"Transfer","type":"event"},{"inputs":[],"name":"DEFAULT_ADMIN_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"REMILIA_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"SUPERMETALX_ROLE","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"wallet","type":"address"}],"name":"add_whitelist","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"approve","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"}],"name":"balanceOf","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"free_mint","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"getApproved","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"}],"name":"getRoleAdmin","outputs":[{"internalType":"bytes32","name":"","type":"bytes32"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"grantRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"hasRole","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"address","name":"operator","type":"address"}],"name":"isApprovedForAll","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"mint1","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"mint10","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"mint5","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"name","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"owner","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"ownerOf","outputs":[{"internalType":"address","name":"","type":"address"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"presale_mint","outputs":[],"stateMutability":"payable","type":"function"},{"inputs":[],"name":"renounceOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"renounceRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes32","name":"role","type":"bytes32"},{"internalType":"address","name":"account","type":"address"}],"name":"revokeRole","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"},{"internalType":"bytes","name":"_data","type":"bytes"}],"name":"safeTransferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"operator","type":"address"},{"internalType":"bool","name":"approved","type":"bool"}],"name":"setApprovalForAll","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"baseURI","type":"string"}],"name":"setBaseURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"string","name":"contractURI","type":"string"}],"name":"setContractURI","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"bytes4","name":"interfaceId","type":"bytes4"}],"name":"supportsInterface","outputs":[{"internalType":"bool","name":"","type":"bool"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"symbol","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"owner","type":"address"},{"internalType":"uint256","name":"index","type":"uint256"}],"name":"tokenOfOwnerByIndex","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"tokenURI","outputs":[{"internalType":"string","name":"","type":"string"}],"stateMutability":"view","type":"function"},{"inputs":[],"name":"totalSupply","outputs":[{"internalType":"uint256","name":"","type":"uint256"}],"stateMutability":"view","type":"function"},{"inputs":[{"internalType":"address","name":"from","type":"address"},{"internalType":"address","name":"to","type":"address"},{"internalType":"uint256","name":"tokenId","type":"uint256"}],"name":"transferFrom","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[{"internalType":"address","name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw_remilia","outputs":[],"stateMutability":"nonpayable","type":"function"},{"inputs":[],"name":"withdraw_supermetalx","outputs":[],"stateMutability":"nonpayable","type":"function"}];
+
+
 var wallet_connected = false;
 var mouse_state = false;
 var over_state = false;
@@ -332,12 +336,63 @@ window.onload = function(){
 		wallet_image.src = "assets/IMG_1494.PNG";
 		wallet_connected = true;
 		wallet_info.style.display = "block";
-		wallet_info.innerHTML = "<p>N/A</p>";
-		return;
+		
+		const msg = document.getElementById("wallet-message");
+		if(!window.ethereum || !window.ethereum.isMetaMask){
+			msg.innerHTML = "<p>MetaMask was not detected. Please <a href='https://metamask.io/'>Install MetaMask</a> to continue.</p>"; 
+			wallet_info.innerHTML = "<p>NO WEB3</p>";
+			return;
+		}
+		
+		if(window.ethereum.isConnected()){
+			start();
+		}
+		
+		ethereum.on("connect", start);
+		msg.innerHTML = "Connecting to MetaMask....";
 		
 		
 	};
 };
+
+//begin basic eth operations
+var wallet = null;
+async function start(){
+
+	const msg = document.getElementById("wallet-message");
+	msg.innerHTML = "Connected to MetaMask.";
+	
+	window.ethereum.request({	method: "eth_requestAccounts" })
+		.then( function( accounts ){
+			msg.innerHTML = "Connected to MetaMask. Wallet ID: " + accounts[0];
+			wallet = accounts[0];
+			buy_init();
+		})
+		.catch( function(error){
+			if(error.code == 4001){
+				msg.innerHTML = "MetaMask declined request.";
+			}
+			else{
+				msg.innerHTML = error.message;
+			}
+		});
+
+	const web3 = new Web3(window.ethereum);
+	if(!web3){
+		msg.innerHTML = "web3.js errror.";
+		return;
+	}
+	
+	contract = new web3.eth.Contract(ABI, ADDRESS);
+	if(!contract){
+		msg.innerHTML = "could not read contract at " + ADDRESS;
+		return;
+	}
+	
+	total_supply = await contract.methods.totalSupply().call();
+	
+	document.getElementById("mint_count").innerHTML = "NFTs minted: " + total_supply + "/" + 777;
+}
 </script>
 <html>
 <head>
@@ -413,7 +468,7 @@ window.onload = function(){
 					<div class="mint-cards-container">
 						<div class="desc-title">
 							<p>
-								SOON - SMM gen 1 holders
+								RIGHT NOW - SMM gen 1 holders
 							</p>
 							<p>
 								Saturday 3-19 - 1PM ET - Whitelist mint
@@ -457,7 +512,7 @@ window.onload = function(){
 					<div class="mint-cards-container">
 						<div class="desc-title">
 							<p>
-								SOON - SMM gen 1 holders 
+								RIGHT NOW - SMM gen 1 holders 
 							</p>
 							<p>
 								Saturday 3-19 - 1PM ET - Whitelist mint
@@ -473,9 +528,11 @@ window.onload = function(){
 		</div>
 			<div class="frame" style="margin-top: 70%">
 				<div class="frame-toplevel">
-					<div class="desc-title" id="wallet-message">
-					<p>Not connected to Web3...</p>
+					<div class="desc-title" >
+					<p id="wallet-message">Not connected to Web3...</p>
+					<p id="mint_count"></p>
 					</div>
+					
 					<div class="mint-cards-container">
 						<div class="mint-card-item">
 						<img id="mc1" class="frame-image" src="assets/IMG_1489.PNG"></img>
