@@ -64,9 +64,11 @@ try_again:;
 	if(past_supply != current_supply){
 		system("git commit -am\"new reveals\"");
 		system("git push origin master");
-	}
 		
-	printf("%s of 777\n",result);
+			
+		printf("revealed %s of 777\n",result);
+	}
+	
 	
 	past_supply = current_supply;
 	
