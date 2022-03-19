@@ -46,15 +46,16 @@ try_again:;
 	
 	for(int i = past_supply; i < current_supply; i++){
 		printf("comitting %d\n",i);
-		snprintf(result,sizeof(result),"cp smm/g2smm%03d.mp4 ../www/mons/g2smm%03d.mp4",i,i);
+		int x = i + 1;
+		snprintf(result,sizeof(result),"cp smm/g2smm%03d.mp4 ../www/mons/g2smm%03d.mp4",x,x);
 		system(result);
-		snprintf(result,sizeof(result),"cp smm/g2smm%03d.PNG ../www/mons/g2smm%03d.png",i,i);
+		snprintf(result,sizeof(result),"cp smm/g2smm%03d.PNG ../www/mons/g2smm%03d.png",x,x);
 		system(result);
 		snprintf(result,sizeof(result),"cp json/%d ../www/mons/json/%d",i,i);
 		system(result);
-		snprintf(result,sizeof(result),"git add ../www/mons/g2smm%03d.mp4",i);
+		snprintf(result,sizeof(result),"git add ../www/mons/g2smm%03d.mp4",x);
 		system(result);
-		snprintf(result,sizeof(result),"git add ../www/mons/g2smm%03d.png",i);
+		snprintf(result,sizeof(result),"git add ../www/mons/g2smm%03d.png",x);
 		system(result);
 		snprintf(result,sizeof(result),"git add ../www/mons/json/%d",i);
 		system(result);
