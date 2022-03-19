@@ -13,6 +13,10 @@ int main(int argc, char **argv){
 	char geth_args[1024] = {0};
 	snprintf(geth_args,sizeof(geth_args)-1,"geth attach http://127.0.0.1:8545 --exec 'loadScript(\"%s\")'",argv[1]);
 	printf("command: %s\n",geth_args);
+	
+	int past_supply = 0;
+	int current_supply = 0;
+	
 try_again:;
 	FILE *geth = popen(geth_args,"r");
 /*
@@ -38,11 +42,30 @@ try_again:;
 	char result[1024] = {0};
 		
 	fread(result,sizeof(result)-1,1,geth);
-		
-	printf("result: %s\n",result);
+	current_supply = atoi(result); 
 	
-	printf("wait\n");
+	for(int i = past_supply; i < current_supply; i++){
+		snprintf(result,sizeof(result),"cp smm/g2smm%03d.mp4 ../www/mons/g2smm%03d.mp4",i,i);
+		system(result);
+		snprintf(result,sizeof(result),"cp smm/g2smm%03d.PNG ../www/mons/g2smm%03d.png",i,i);
+		system(result);
+		snprintf(result,sizeof(result),"cp json/%d ../www/mons/json/%d",i);
+		system(result);
+		snprintf(result,sizeof(result),"git add ../www/mons/g2smm%03d.mp4",i);
+		system(result);
+		snprintf(result,sizeof(result),"git add ../www/mons/g2smm%03d.png",i);
+		system(result);
+		snprintf(result,sizeof(result),"git add ../www/mons/json/%d",i);
+		system(result);
+
+	}
+		
+	printf("%s of 777\n",result);
+	
+	
+	
+
 	sleep(5);
-	printf("done waiting\n");
+	
 	goto try_again;
 }
