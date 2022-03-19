@@ -411,10 +411,13 @@ async function mint_free(){
 	const gas_price = await web3.eth.getGasPrice();
 	var gas = 0;
 	
+	
+	
 	try {
 		gas = await contract.methods.free_mint().estimateGas({ gasPrice: gas_price , from: wallet, value: 0 });
 	}
 	catch (error){
+		document.getElementById("error-message").innerHTML = console.log(error.name);
 		console.log(error.name);
 		console.log(error.message);
 		return;
@@ -562,6 +565,7 @@ async function mint_free(){
 					<div class="desc-title" >
 					<p id="wallet-message">Not connected to Web3...</p>
 					<p id="mint_count"></p>
+					<p id="error-msg"></p>
 					</div>
 					
 					<div class="mint-cards-container">
