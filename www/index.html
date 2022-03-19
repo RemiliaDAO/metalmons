@@ -431,6 +431,8 @@ async function start(){
 	total_supply = await contract.methods.totalSupply().call();
 	
 	document.getElementById("mint_count").innerHTML = "NFTs minted: " + total_supply + "/" + 777;
+		document.getElementById("mint_count2").innerHTML = "NFTs minted: " + total_supply + "/" + 777;
+
 }
 
 async function mint(x){
@@ -675,7 +677,7 @@ async function mint_free(){
 							<div class="desc-title" >
 								<img id="mobileconnect" class="wallet-image2" src="assets/IMG_1277.PNG"></img>
 								<p id="wallet-message2">Connect your wallet on Metamask to mint</p>
-								<p id="mint_count"></p>
+								<p id="mint_count2"></p>
 								<p id="error-message"></p>
 							</div>
 						</div>
