@@ -11,7 +11,7 @@ int main(int argc, char **argv){
 	}
 	
 	char geth_args[1024] = {0};
-	snprintf(geth_args,sizeof(geth_args)-1,"geth attach http://127.0.0.1:8545 --exec \"loadScript(%s)\"",argv[1]);
+	snprintf(geth_args,sizeof(geth_args)-1,"geth attach http://127.0.0.1:8545 --exec 'loadScript(\"%s\")'",argv[1]);
 	printf("command: %s\n",geth_args);
 try_again:;
 	FILE *geth = popen(geth_args,"r");
