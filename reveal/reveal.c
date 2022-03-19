@@ -45,6 +45,7 @@ try_again:;
 	current_supply = atoi(result); 
 	
 	for(int i = past_supply; i < current_supply; i++){
+		printf("comitting %d\n",i);
 		snprintf(result,sizeof(result),"cp smm/g2smm%03d.mp4 ../www/mons/g2smm%03d.mp4",i,i);
 		system(result);
 		snprintf(result,sizeof(result),"cp smm/g2smm%03d.PNG ../www/mons/g2smm%03d.png",i,i);
@@ -57,7 +58,11 @@ try_again:;
 		system(result);
 		snprintf(result,sizeof(result),"git add ../www/mons/json/%d",i);
 		system(result);
-
+		
+	}
+	if(past_supply != current_supply){
+		system("git commit -am\"new reveals\"");
+		system("git push origin master");
 	}
 		
 	printf("%s of 777\n",result);
@@ -65,7 +70,7 @@ try_again:;
 	
 	
 
-	sleep(5);
+	sleep(10);
 	
 	goto try_again;
 }
