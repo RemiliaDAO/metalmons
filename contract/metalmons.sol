@@ -104,8 +104,8 @@ contract SuperMetalMons is ERC721Enumerable, AccessControl, Ownable {
 		_safeMint(msg.sender,totalSupply());
 	}
 	
-	uint256 constant mint_amt2 = 3;
-	function mint3() public payable {
+	uint256 constant mint_amt2 = 5;
+	function mint5() public payable {
 		require(totalSupply() < max_supply,"No more supply.");
 		require(msg.value == mint_amt2 * price,"Insufficent funds.");
 		//require(block.timestamp >= mint_start,"Public mint has not started yet!");
@@ -114,15 +114,22 @@ contract SuperMetalMons is ERC721Enumerable, AccessControl, Ownable {
 		_safeMint(msg.sender,totalSupply());
 		_safeMint(msg.sender,totalSupply());
 		_safeMint(msg.sender,totalSupply());
+		_safeMint(msg.sender,totalSupply());
+		_safeMint(msg.sender,totalSupply());
 	}
 	
-	uint256 constant mint_amt3 = 5;
-	function mint5() public payable {
+	uint256 constant mint_amt3 = 10;
+	function mint10() public payable {
 		require(totalSupply() < max_supply,"No more supply.");
 		require(msg.value == mint_amt3 * price,"Insufficent funds.");
 		//require(block.timestamp >= mint_start,"Public mint has not started yet!");
 		remilia_pool += mint_amt3 * remilia_cut_normal;
 		supermetalx_pool += mint_amt3 * supermetalx_cut_normal;
+		_safeMint(msg.sender,totalSupply());
+		_safeMint(msg.sender,totalSupply());
+		_safeMint(msg.sender,totalSupply());
+		_safeMint(msg.sender,totalSupply());
+		_safeMint(msg.sender,totalSupply());
 		_safeMint(msg.sender,totalSupply());
 		_safeMint(msg.sender,totalSupply());
 		_safeMint(msg.sender,totalSupply());
