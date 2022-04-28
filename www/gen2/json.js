@@ -84,7 +84,7 @@ function buildFromJSON(json, output, index) {
                 var element = template.clone();
                 element.find(".name").text(json.name);
                 element.find(".image").attr("src", json.image);
-                element.find(".description").text(json.description);
+                //element.find(".description").text(json.description);
                 element.find(".link").attr("href", shopUrl + index);
                 output.push(element);
             }
