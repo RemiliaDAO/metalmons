@@ -1,6 +1,6 @@
 var lookupTable = new Map();
 //const lookupTableURL = "http://localhost:8000/lookup.tsv";
-const lookupTableURL = "https://supermetalmons.xyz/gen2/lookup.tsv";
+const lookupTableURL = "https://supermetalmons.xyz/gen1/lookup.tsv";
 var lookupFlag = false; //This will become true when the lookup table is done being built
 
 var template = null;
