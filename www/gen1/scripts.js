@@ -1,5 +1,5 @@
 var lookupTable = new Map();
-//const lookupTableURL = "http://localhost:8000/lookup.tsv";
+//const lookupTableURL = "http://localhost:8000/gen1/lookup.tsv";
 const lookupTableURL = "https://supermetalmons.xyz/gen1/lookup.tsv";
 var lookupFlag = false; //This will become true when the lookup table is done being built
 
@@ -9,7 +9,8 @@ var base = 0;
 const defaultBase = 0;
 var catalogCount = 6;
 const defaultCatalogCount = 6;
-const max = 144;
+const max = 145;
+const min = 1;
 
 window.addEventListener('load', (event) => {
     //Load all of the URLs in the lookup table
@@ -38,6 +39,19 @@ window.addEventListener('load', (event) => {
     template.detach();
     template.removeAttr('id');
 
+    applyConfines();
+
+    if(base <= 0) {
+        $("#nextButton").show();
+        $("#prevButton").hide();
+    } else if(base > max - catalogCount) {
+        $("#nextButton").hide();
+        $("#prevButton").show();
+    } else {
+        $("#nextButton").show();
+        $("#prevButton").show();
+    }
+
     buildCatalog(base, catalogCount);
 });
 
@@ -61,8 +75,8 @@ function prevButton() {
     $("#prevButton").show();
 
     base -= catalogCount;
-    if(base <= 0) {
-        base = 0;
+    if(base <= min) {
+        base = min;
         $("#prevButton").hide();
     }
 
@@ -121,10 +135,8 @@ function buildItem(index) {
     var elm = template.clone();
 
     if(index > max || index <= 0) {
-        elm.find(".name").text("To be announced");
-        elm.find(".image").attr("src", "https://via.placeholder.com/500x500?text=More+coming+soon");
+        elm.find(".image").attr("src", "https://via.placeholder.com/500x500");
     } else {
-        elm.find(".name").text(indexString);
         elm.find(".image").attr("src", "../pix/" + indexString + ".JPG");
         elm.find(".link").attr("href", lookupTable.get(indexString));
         
@@ -133,4 +145,11 @@ function buildItem(index) {
     console.log(elm);
 
     $("#catalog").append(elm);
+}
+
+function applyConfines() {
+    if(base <= min)
+        base = min;
+    if(base >= max - catalogCount)
+        base = max - catalogCount;
 }

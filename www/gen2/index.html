@@ -4,20 +4,21 @@
     <head>
         <title></title>
         <meta charset="utf-8"/>
-          <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="../styles.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="json.js"></script>
+        <script src="scripts.js"></script>
     </head>
     <body>
-        <img src="../assets/IMG_1314.PNG" class="logo">
+        <div class="logoBox">
+            <img src="../logo.png" class="logo">
+        </div>
         <main id="catalog" class="grid">
             <!--This is NOT displayed, its instead used as a template for the javascript-->
             <article id="template">
-                <p class="name"></p>
+                <strong><p class="name"></p></strong>
                 <a class="link">
                     <img class="image" src="" width="100%"> <!--Image-->
                 </a>
-                <p class="description"></p> <!--Description-->
                 <ul class="attributes"> <!--Attributes-->
                 </ul>
             </article>
