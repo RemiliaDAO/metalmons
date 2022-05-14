@@ -5,7 +5,7 @@ html {
 
 body {
     margin: 0;
-    background-image: radial-gradient(circle at 1px 1px, #f0f0f0 1px, transparent 0);
+   /*background-image: radial-gradient(circle at 1px 1px, #f0f0f0 1px, transparent 0);*/
     background-size: 10px 10px;
     font-family: "Courier New";
     padding: 2.5vh 5%;
